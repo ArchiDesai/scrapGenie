@@ -1,0 +1,131 @@
+app.js
+console.log("hello");
+const user = require("./user");
+console.log(user.userName);
+console.log(user.userAge);
+console.log(user.userCountry);
+user.printData(11);
+
+
+// http://localhost:3000/test
+// app.get("/test", (req, res) => {
+//   console.log("test api called..");
+//   res.send("hello");
+// });
+
+// app.get("/users", (req, res) => {
+//   console.log("data printed..");
+//   res.json({
+//     name: "xyz",
+//     age: 20,
+//     country: "India",
+//   });
+// });
+
+
+app.get("/employees", (req, res) => {
+  console.log("Data Printed...");
+  res.json([
+    { id: 1, name: "Alice Johnson", age: 29, department: "HR", salary: 55000 },
+    { id: 2, name: "Bob Smith", age: 35, department: "IT", salary: 75000 },
+    {
+      id: 3,
+      name: "Charlie Brown",
+      age: 28,
+      department: "Finance",
+      salary: 62000,
+    },
+    {
+      id: 4,
+      name: "David Wilson",
+      age: 42,
+      department: "Marketing",
+      salary: 67000,
+    },
+    { id: 5, name: "Emma Davis", age: 31, department: "Sales", salary: 58000 },
+    { id: 6, name: "Frank Thomas", age: 45, department: "IT", salary: 80000 },
+    { id: 7, name: "Grace Lee", age: 26, department: "HR", salary: 52000 },
+    {
+      id: 8,
+      name: "Henry White",
+      age: 39,
+      department: "Finance",
+      salary: 70000,
+    },
+    {
+      id: 9,
+      name: "Isabella Martinez",
+      age: 33,
+      department: "Marketing",
+      salary: 65000,
+    },
+    {
+      id: 10,
+      name: "Jack Anderson",
+      age: 27,
+      department: "Sales",
+      salary: 60000,
+    },
+    { id: 11, name: "Karen Taylor", age: 38, department: "IT", salary: 77000 },
+    {
+      id: 12,
+      name: "Liam Harris",
+      age: 30,
+      department: "Finance",
+      salary: 64000,
+    },
+    { id: 13, name: "Mia Clark", age: 36, department: "HR", salary: 56000 },
+    {
+      id: 14,
+      name: "Nathan Lewis",
+      age: 40,
+      department: "Marketing",
+      salary: 68000,
+    },
+    {
+      id: 15,
+      name: "Olivia Walker",
+      age: 29,
+      department: "Sales",
+      salary: 59000,
+    },
+    { id: 16, name: "Paul Hall", age: 41, department: "IT", salary: 78000 },
+    {
+      id: 17,
+      name: "Quinn Allen",
+      age: 34,
+      department: "Finance",
+      salary: 66000,
+    },
+    { id: 18, name: "Rachel Scott", age: 37, department: "HR", salary: 54000 },
+    {
+      id: 19,
+      name: "Samuel Young",
+      age: 32,
+      department: "Marketing",
+      salary: 64000,
+    },
+    { id: 20, name: "Tina King", age: 25, department: "Sales", salary: 57000 },
+  ]);
+});
+
+
+
+
+user.js
+// console.log("How are you");
+
+// var userName = "abc";
+// var userAge = 21;
+// var userCountry = "India";
+
+// function printData(a) {
+//   console.log("this is function...", a);
+// }
+
+// module.exports = {
+//   userName,
+//   userAge,
+//   userCountry,
+//   printData,
+// };
