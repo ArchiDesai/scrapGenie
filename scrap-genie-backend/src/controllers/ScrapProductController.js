@@ -41,7 +41,7 @@ const getAllScrapProductByUserId = async (req, res) => {
   try {
     const scrapProducts = await scrapProductModel
       .find({ userId: req.params.userId })
-      .populate("userId");
+      .populate("userId stateId");
     if (scrapProducts.length === 0) {
       res.status(404).json({ message: "no product found" });
     } else {

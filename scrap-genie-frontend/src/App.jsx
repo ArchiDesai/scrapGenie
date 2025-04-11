@@ -21,6 +21,9 @@ import BuyerDashboardLayout from "./layouts/BuyerDashboardLayout";
 import AddCart from "./components/buyer/AddCart";
 import ForgotPassword from "./components/common/ForgotPassword";
 import CreateNewPassword from "./components/common/CreateNewPassword";
+// import SavedProduct from "./components/buyer/SavedProduct";
+import Wishlist from "./components/buyer/Wishlist";
+import MyPurchase from "./components/buyer/MyPurchase";
 
 const App = () => {
   axios.defaults.baseURL = "http://localhost:3000";
@@ -37,23 +40,26 @@ const App = () => {
           element={<CreateNewPassword />}
         />
 
-        {/* <Route path="" element={<PrivateRoute />}> */}
+        <Route path="" element={<PrivateRoute />}>
           <Route path="/seller" element={<SellerDashboardLayout />}>
             <Route index element={<SellerDashboard />} />
             <Route path="addproduct" element={<AddScrapProduct />} />
             <Route path="scrapproductlist" element={<ScrapProductList />} />
             <Route path="updateproduct/:id" element={<UpdateProduct />} />
           </Route>
-          <Route path="/allproducts" element={<AllProductList />} />
           <Route path="/buyer" element={<BuyerDashboardLayout />}>
             <Route index element={<BuyerDashboard />} />
             <Route path="cart" element={<AddCart />} />
+            <Route path="allproducts" element={<AllProductList />} />
+            <Route path="wishlist" element={<Wishlist />} />
+            <Route path="mypurchase" element={<MyPurchase />} />
+            {/* <Route path="savedproducts" element={<SavedProduct />} /> */}
           </Route>
           <Route path="/profile" element={<Profile />} />
           {/* <Route path="/message" element={<Message />} /> */}
           <Route path="/payment" element={<Payment />} />
           <Route path="/review" element={<Review />} />
-        {/* </Route> */}
+        </Route>
       </Routes>
     </div>
   );

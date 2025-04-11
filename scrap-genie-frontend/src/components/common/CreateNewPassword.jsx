@@ -94,7 +94,8 @@ const CreateNewPassword = () => {
   };
 
   return (
-    <div className="bg-gray-100 flex items-center justify-center min-h-screen p-4">
+    <div className="bg-gray-100 flex items-center justify-center min-h-screen p-4"
+    >
       <div className="w-full max-w-md md:max-w-lg bg-white shadow-lg rounded-lg p-6">
         <ToastContainer
           position="top-right"

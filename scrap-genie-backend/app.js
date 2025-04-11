@@ -32,29 +32,16 @@ app.use("/area", areaRoute);
 const scrapProductRoute = require("./src/routes/ScrapProductRoute");
 app.use("/scrapProduct", scrapProductRoute);
 
-// import buyer route
-const buyerRoute = require("./src/routes/BuyerRoute");
-app.use("/buyer", buyerRoute);
-
-// import communication route
-const communicationRoute = require("./src/routes/CommunicationRoute");
-app.use("/communication", communicationRoute);
-
 // import transaction route
 const transactionRoute = require("./src/routes/TransactionRoute");
 app.use("/transaction", transactionRoute);
 
-// import pickup route
-const pickupRoute = require("./src/routes/PickupRoute");
-app.use("/pickup", pickupRoute);
-
-// import review route
-const reviewRoute = require("./src/routes/ReviewRoute");
-app.use("/review", reviewRoute);
-
 // import support route
 const supportRoute = require("./src/routes/SupportRoute");
 app.use("/support", supportRoute);
+
+const myProductRoute = require("./src/routes/MyProductRoute")
+app.use("/myproduct",myProductRoute)
 
 mongoose.connect("mongodb://localhost:27017/scrapgenie_backend").then(() => {
   console.log("database connected..");

@@ -3,6 +3,17 @@ const bcrypt = require("bcrypt");
 const mailutil = require("../utils/MailUtil");
 const jwt = require("jsonwebtoken");
 const secret = "secret";
+const cloudinaryUtil = require("../utils/CloudinaryUtil");
+const multer = require("multer");
+
+const storage = multer.diskStorage({
+  destination: "./uploads",
+  filename: function (req, file, cb) {
+    cb(null, file.originalname);
+  },
+});
+
+const upload = multer({ storage: storage }).single("image");
 
 const signup = async (req, res) => {
   try {
@@ -71,7 +82,9 @@ const getAllUsers = async (req, res) => {
 
 const getUserById = async (req, res) => {
   try {
-    const foundUser = await userModel.findById(req.params.id);
+    const foundUser = await userModel
+      .findById(req.params.id)
+      .populate("stateId roleId");
     res
       .status(200)
       .json({ message: "User fatched successfully...", data: foundUser });
@@ -141,6 +154,41 @@ const resetPassword = async (req, res) => {
   }
 };
 
+const updateUserByIdWithProfile = async (req, res) => {
+  // upload(req, res, async (err) => {
+  //   if (err) {
+  //     console.log(err);
+  //     res.status(500).json({ message: err.message });
+  //   } else {
+  //     const cloudinaryResponse = await cloudinaryUtil.uploadFileToCloudinary(
+  //       req.file
+  //     );
+
+  //     // store data in database
+  //     req.body.profileImage = cloudinaryResponse.secure_url;
+  //     const updatedUser = await scrapProductModel.findByIdAndUpdate(
+  //       req.params.id,
+  //       req.body,
+  //       { new: true }
+  //     );
+  //     res.status(201).json({
+  //       message: "Product saved successfully",
+  //       data: updatedUser,
+  //     });
+  //   }
+  // });
+  try {
+    const updateUser = await userModel.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true }
+    );
+    res.status(201).json({ message: "user updated..", data: updateUser });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
 module.exports = {
   signup,
   login,
@@ -149,4 +197,5 @@ module.exports = {
   deleteUser,
   forgotPassword,
   resetPassword,
+  updateUserByIdWithProfile,
 };

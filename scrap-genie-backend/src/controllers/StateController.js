@@ -10,7 +10,7 @@ const addState = async (req, res) => {
     res.status(500).json({ message: err });
   }
 };
-
+``
 const getAllState = async (req, res) => {
   try {
     const states = await stateModel.find();
