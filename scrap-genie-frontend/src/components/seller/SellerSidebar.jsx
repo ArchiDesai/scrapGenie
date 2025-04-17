@@ -11,7 +11,7 @@ const SellerSidebar = () => {
 
   const getUserById = async () => {
     const res = await axios.get("/getusersbyid/" + localStorage.getItem("id"));
-    console.log(res.data.data);
+    // console.log(res.data.data);
     setUser(res.data.data);
   };
 

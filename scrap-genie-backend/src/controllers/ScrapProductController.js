@@ -62,8 +62,7 @@ const deleteScrapProduct = async (req, res) => {
     res
       .status(200)
       .json({ message: "Scrap list deleted..", data: removedScrapProduct });
-  }
-   catch (err) {
+  } catch (err) {
     res.status(500).json({ message: err });
   }
 };
@@ -71,7 +70,7 @@ const deleteScrapProduct = async (req, res) => {
 const addScrapProductWithFile = async (req, res) => {
   upload(req, res, async (err) => {
     if (err) {
-      console.log(err)
+      console.log(err);
       res.status(500).json({ message: err.message });
     } else {
       const cloudinaryResponse = await cloudinaryUtil.uploadFileToCloudinary(

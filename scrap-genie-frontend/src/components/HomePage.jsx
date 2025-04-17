@@ -103,7 +103,7 @@ const role = localStorage.getItem("role")
               Home
             </Link>
             <Link
-              to="/buyer/allproducts"
+              to="/buyer"
               className="px-4 py-2 text-gray-600 hover:text-green-700 hover:bg-green-50 rounded-lg transition-colors flex items-center gap-2"
             >
               <FaListUl />
@@ -159,7 +159,7 @@ const role = localStorage.getItem("role")
               Home
             </Link>
             <Link
-              to="/buyer/allproducts"
+              to="/buyer"
               className="px-4 py-3 text-gray-700 hover:bg-green-50 rounded-lg transition-colors border-b border-gray-100"
               onClick={() => setIsMenuOpen(false)}
             >

@@ -352,6 +352,8 @@ const Signup = () => {
                     </label>
                     <input
                       type="tel"
+                      minLength={10}
+                      maxLength={10}
                       {...register("phone", validationSchema.phoneValidation)}
                       className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
                       placeholder="1234567890"

@@ -3,17 +3,19 @@ const bcrypt = require("bcrypt");
 const mailutil = require("../utils/MailUtil");
 const jwt = require("jsonwebtoken");
 const secret = "secret";
-const cloudinaryUtil = require("../utils/CloudinaryUtil");
-const multer = require("multer");
+// const cloudinaryUtil = require("../utils/CloudinaryUtil");
+// const multer = require("multer");
 
-const storage = multer.diskStorage({
-  destination: "./uploads",
-  filename: function (req, file, cb) {
-    cb(null, file.originalname);
-  },
-});
+// const storage = multer.diskStorage({
+//   destination: "./uploads",
+//   filename: function (req, file, cb) {
+//     cb(null, file.originalname);
+//   },
+// });
 
-const upload = multer({ storage: storage }).single("image");
+
+
+// const upload = multer({ storage: storage }).single("image");
 
 const signup = async (req, res) => {
   try {
@@ -37,6 +39,8 @@ const signup = async (req, res) => {
     res.status(500).json({ message: "Error..", data: err });
   }
 };
+
+
 const login = async (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
@@ -64,6 +68,8 @@ const login = async (req, res) => {
   }
 };
 
+
+
 const getAllUsers = async (req, res) => {
   try {
     const users = await userModel
@@ -80,6 +86,7 @@ const getAllUsers = async (req, res) => {
   }
 };
 
+
 const getUserById = async (req, res) => {
   try {
     const foundUser = await userModel
@@ -93,6 +100,8 @@ const getUserById = async (req, res) => {
   }
 };
 
+
+
 const deleteUser = async (req, res) => {
   try {
     const deletedUser = await userModel.findByIdAndDelete(req.params.id);
@@ -104,6 +113,8 @@ const deleteUser = async (req, res) => {
     res.status(500).json({ message: err });
   }
 };
+
+
 
 const forgotPassword = async (req, res) => {
   try {
@@ -131,6 +142,8 @@ const forgotPassword = async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 };
+
+
 
 const resetPassword = async (req, res) => {
   try {

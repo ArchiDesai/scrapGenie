@@ -6,11 +6,11 @@ import { IoPersonCircleSharp } from "react-icons/io5";
 const SellerDashboard = () => {
   const [userName, setUserName] = useState("");
   const [products, setProducts] = useState([]);
-  // const [messages, setMessages] = useState([]);
-  // const [selectedChat, setSelectedChat] = useState(null);
 
   const getUserByUserId = async () => {
     const res = await axios.get("/getusersbyid/" + localStorage.getItem("id"));
+    // console.log(res.data.data);
+
     setUserName(res.data.data);
   };
 
@@ -23,14 +23,14 @@ const SellerDashboard = () => {
 
   const deleteProductById = async (id) => {
     const res = await axios.delete(`/scrapProduct/deleteproductbyid/${id}`);
-    console.log(res.data);
 
     setProducts(
       products.filter((product) => {
         product._id !== id;
       })
     );
-  };8
+    getAllMyProducts();
+  };
 
   const calculateTotalSales = () => {
     return products
@@ -53,7 +53,7 @@ const SellerDashboard = () => {
   useEffect(() => {
     getUserByUserId();
     getAllMyProducts();
-  }, [deleteProductById]);
+  }, []);
 
   return (
     <div className="flex flex-col md:flex-row h-screen bg-gray-100">
@@ -128,7 +128,9 @@ const SellerDashboard = () => {
                             ? "text-green-600"
                             : "text-red-600"
                         }`}
-                      >{product.status}</td>
+                      >
+                        {product.status}
+                      </td>
                       <td className="p-2">
                         <button className="bg-green-600 text-white px-2 md:px-4 py-1 md:py-2 mt-2 rounded hover:bg-green-700 transition">
                           <Link to={`/seller/updateproduct/${product._id}`}>

@@ -11,7 +11,7 @@ const MyPurchase = () => {
     </div>
     <h2 className="text-xl font-semibold text-gray-800 mb-2">No products found</h2>
     <p className="text-gray-500 mb-6">Try adjusting your search or filters</p>
-    <Link to="/buyer/allproducts">
+    <Link to="/buyer">
     <button className="bg-gradient-to-r from-green-600 to-green-800 text-white px-8 py-3 rounded-xl font-bold transition-all hover:shadow-lg hover:scale-[1.02]">
             View All Products
         </button>

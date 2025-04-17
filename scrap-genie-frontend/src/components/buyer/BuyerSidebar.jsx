@@ -9,8 +9,8 @@ import { useSelector } from "react-redux";
 import axios from "axios";
 
 const BuyerSidebar = () => {
-  const cart = useSelector((state) => state.cart.items);
-  const wishlist = useSelector((state) => state.wishlist);
+  const { totalQuantity } = useSelector((state) => state.cart);
+  // const wishlist = useSelector((state) => state.wishlist);
 
   const [isOpen, setIsOpen] = useState(false);
   const [user, setUser] = useState([]);
@@ -59,25 +59,10 @@ const BuyerSidebar = () => {
             <FaTimes size={20} />
           </button>
         </div>
-        <nav className="mt-6">
-          
-
-          
-        </nav>
 
         <nav className="mt-6 space-y-2">
           <Link
             to="/buyer"
-            className="flex items-center py-3 px-4 rounded-lg text-gray-100 hover:bg-gradient-to-r from-green-50 to-green-100 hover:text-green-600 transition-all group"
-            onClick={() => setIsOpen(false)}
-          >
-            <span className="mr-3 group-hover:scale-110 transition-transform">
-              📊
-            </span>
-            <span className="font-medium">Dashboard</span>
-          </Link>
-          <Link
-            to="allproducts"
             className="flex items-center py-3 px-4 rounded-lg text-gray-100 hover:bg-gradient-to-r from-green-50 to-green-100 hover:text-green-600 transition-all group"
             onClick={() => setIsOpen(false)}
           >
@@ -92,20 +77,19 @@ const BuyerSidebar = () => {
             onClick={() => setIsOpen(false)}
           >
             <div className="flex items-center">
-            <div className="flex flex-col">
-              {cart.length > 0 && (
+              <div className="flex flex-col">
+                {/* {cartTotalQuantity > 0 && ( */}
                 <span className=" bg-green-700 rounded-full flex ml-1 h-4 w-4 justify-center items-center text-green-100 font-bold text-xs">
-                  {cart.length}
+                  {totalQuantity}
                 </span>
-              )}
+                {/* )} */}
 
-              <span className="mr-3 group-hover:scale-110 text-xl transition-transform">
-                <BsCart4 />
-              </span>
-            </div>
+                <span className="mr-3 group-hover:scale-110 text-xl transition-transform">
+                  <BsCart4 />
+                </span>
+              </div>
 
               <span className="font-medium">Cart</span>
-
             </div>
           </Link>
           <Link
@@ -114,20 +98,13 @@ const BuyerSidebar = () => {
             onClick={() => setIsOpen(false)}
           >
             <div className="flex items-center">
-            <div className="flex flex-col">
-            {/* {wishlist.items.length > 0 && (
-                <span className="bg-red-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">
-                  {wishlist.items.length}
+              <div className="flex flex-col">
+                <span className="mr-3 group-hover:scale-110 text-xl transition-transform">
+                  <FaHeart className="text-red-600" />
                 </span>
-              )} */}
-
-              <span className="mr-3 group-hover:scale-110 text-xl transition-transform">
-              <FaHeart className="text-red-600" /> 
-              </span>
-            </div>
+              </div>
 
               <span className="font-medium">Wishlist</span>
-
             </div>
           </Link>
 
