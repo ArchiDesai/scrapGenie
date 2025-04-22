@@ -33,12 +33,8 @@ const scrapProductRoute = require("./src/routes/ScrapProductRoute");
 app.use("/scrapProduct", scrapProductRoute);
 
 // import transaction route
-const transactionRoute = require("./src/routes/TransactionRoute");
-app.use("/transaction", transactionRoute);
-
-// import support route
-const supportRoute = require("./src/routes/SupportRoute");
-app.use("/support", supportRoute);
+// const paymentRoute = require("./src/routes/PaymentRoute");
+// app.use("/payment", paymentRoute);
 
 const myProductRoute = require("./src/routes/MyProductRoute")
 app.use("/myproduct",myProductRoute)
